@@ -7,14 +7,14 @@ data class PeopleList(
     @SerializedName("page")
     val page: Int? = 1,
     @SerializedName("results")
-    val results: List<Result?>? = null,
+    val results: List<People?>? = null,
     @SerializedName("total_pages")
     val totalPages: Int? = null,
     @SerializedName("total_results")
     val totalResults: Int? = null
 )
 
-data class Result(
+data class People(
     @SerializedName("adult")
     val adult: Boolean? = null,
     @SerializedName("gender")
