@@ -8,50 +8,62 @@
             type="com.ashish.shgardi.data.model.People" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/round_button"
-        >
-
-        <ImageView
-            android:id="@+id/imageViewProfile"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/surfaceColor"
+        app:cardElevation="12dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:imageUrl="@{person.profilePath}" />
+            >
 
-        <TextView
-            android:id="@+id/textViewName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{person.name}"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/material_emphasis_high_type"
-            app:layout_constraintTop_toBottomOf="@id/imageViewProfile"
-            app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/imageViewProfile"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintDimensionRatio="H,9:9"
+                android:adjustViewBounds="true"
+                />
 
-        <TextView
-            android:id="@+id/textViewPopularity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"Popularity: " + person.popularity}'
-            app:layout_constraintTop_toBottomOf="@id/textViewName"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{person.name}"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@id/imageViewProfile"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/textViewWorkArea"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"Work Area: " + person.knownForDepartment}'
-            app:layout_constraintTop_toBottomOf="@id/textViewPopularity"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/textViewPopularity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text='@{"Popularity: " + person.popularity}'
+                app:layout_constraintTop_toBottomOf="@id/textViewName"
+                app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textViewWorkArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:paddingBottom="8dp"
+                android:text='@{"Work Area: " + person.knownForDepartment}'
+                app:layout_constraintTop_toBottomOf="@id/textViewPopularity"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

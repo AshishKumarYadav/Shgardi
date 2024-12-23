@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Light theme colors -->
+    <color name="primaryColor">#6200EE</color>
+    <color name="primaryDarkColor">#3700B3</color>
+    <color name="onPrimaryColor">#FFFFFF</color>
+    <color name="secondaryColor">#03DAC6</color>
+    <color name="secondaryDarkColor">#018786</color>
+    <color name="onSecondaryColor">#000000</color>
+    <color name="surfaceColor">#FFFFFF</color>
+    <color name="onSurfaceColor">#000000</color>
+
+    <!-- Dark theme colors -->
+    <color name="primaryColorDark">#BB86FC</color>
+    <color name="primaryDarkColorDark">#3700B3</color>
+    <color name="onPrimaryColorDark">#000000</color>
+    <color name="secondaryColorDark">#03DAC6</color>
+    <color name="secondaryDarkColorDark">#03DAC6</color>
+    <color name="onSecondaryColorDark">#000000</color>
+    <color name="surfaceColorDark">#121212</color>
+    <color name="onSurfaceColorDark">#FFFFFF</color>
 </resources>

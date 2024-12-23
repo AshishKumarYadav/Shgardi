@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.ashish.shgardi"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.ashish.shgardi"
@@ -54,7 +54,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
+    implementation(libs.fragment.ktx)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)

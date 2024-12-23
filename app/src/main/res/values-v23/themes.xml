@@ -1,5 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
     <style name="Base.Theme.Shgardi" parent="Theme.Material3.Light.NoActionBar">
         <!-- Light theme colors -->
         <item name="colorPrimary">@color/primaryColor</item>
@@ -13,6 +14,4 @@
         <item name="android:statusBarColor">@color/primaryDarkColor</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
-
-    <style name="Theme.Shgardi" parent="Base.Theme.Shgardi" />
 </resources>

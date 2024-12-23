@@ -10,10 +10,4 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.ashish.delivery.presentation.views.TransfersFragment"
-        android:label="Transfers"
-        tools:layout="@layout/fragment_transfers" />
-
 </navigation>

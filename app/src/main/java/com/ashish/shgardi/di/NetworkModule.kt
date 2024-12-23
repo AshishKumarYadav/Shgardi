@@ -1,7 +1,7 @@
 package com.ashish.shgardi.di
 
 
-import com.ashish.delivery.data.remote.Endpoints
+import com.ashish.shgardi.data.remote.Endpoints
 import com.ashish.shgardi.data.remote.ApiService
 import com.ashish.shgardi.utils.AuthInterceptor
 import com.ashish.shgardi.utils.Const

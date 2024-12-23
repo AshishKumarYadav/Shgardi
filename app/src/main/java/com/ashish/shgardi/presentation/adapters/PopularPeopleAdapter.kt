@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ashish.shgardi.data.model.People
 import com.ashish.shgardi.databinding.ItemPopularPersonBinding
+import com.bumptech.glide.Glide
 
 class PopularPeopleAdapter: ListAdapter<People, PopularPeopleAdapter.PopularPeopleViewHolder>(DiffCallback()) {
 
@@ -21,8 +22,12 @@ class PopularPeopleAdapter: ListAdapter<People, PopularPeopleAdapter.PopularPeop
 
     class PopularPeopleViewHolder(private val binding: ItemPopularPersonBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(person: People) {
+            println("Person: ${person.profilePath}")
             binding.person = person
             binding.executePendingBindings()
+            Glide.with(binding.root)
+                .load(BASE_IMAGE_URL+person.profilePath)
+                .into(binding.imageViewProfile)
         }
     }
 
@@ -34,5 +39,8 @@ class PopularPeopleAdapter: ListAdapter<People, PopularPeopleAdapter.PopularPeop
         override fun areContentsTheSame(oldItem: People, newItem: People): Boolean {
             return oldItem == newItem
         }
+    }
+    companion object {
+        const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w300"
     }
 }

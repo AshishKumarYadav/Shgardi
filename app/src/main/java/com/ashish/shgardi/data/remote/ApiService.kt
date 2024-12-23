@@ -1,6 +1,6 @@
 package com.ashish.shgardi.data.remote
 
-import com.ashish.delivery.data.remote.Endpoints.END_POINT_POPULAR
+import com.ashish.shgardi.data.remote.Endpoints.END_POINT_POPULAR
 import com.ashish.shgardi.data.model.PeopleList
 import com.ashish.shgardi.utils.Resources
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +14,6 @@ interface ApiService {
     suspend fun getPopularPeopleByPage(
         @Query("language") language: String = "en-US",
         @Query("page") page: Int
-    ): Flow<Resources<PeopleList>>
+    ): PeopleList
 
 }

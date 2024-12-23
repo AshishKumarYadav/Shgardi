@@ -9,7 +9,7 @@ import javax.inject.Inject
 class GetPopularPeopleListUseCase @Inject constructor(
     private val homeRepository: HomeRepository
 ) {
-    suspend operator fun invoke(page: Int): Flow<Resources<PeopleList>> {
+    suspend operator fun invoke(page: Int): PeopleList {
         return homeRepository.getPopularPeopleLists(page)
     }
 }

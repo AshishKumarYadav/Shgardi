@@ -33,7 +33,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         initViews()
         setupRecyclerView()
-        fetchPopularPeopleList()
+        observePeopleList()
     }
 
     private fun initViews() {
@@ -59,28 +59,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun fetchPopularPeopleList() {
+    private fun observePeopleList() {
 
         // observe data from view model
         lifecycleScope.launch {
             viewModel.popularPeopleList.collect { result ->
-                when (result) {
-                    is Resources.Loading -> {
-                        // Show loading state
-                        binding.progressBar.visibility = View.VISIBLE
-                    }
-                    is Resources.Success -> {
-                        // Update the adapter with the new data
-                        println(result.data?.results)
-                        mainAdapter.submitList(result.data?.results)
-                        binding.progressBar.visibility = View.GONE
 
-                    }
-                    is Resources.Error -> {
-                        // Show error state
-                        binding.progressBar.visibility = View.GONE
-                    }
-                }
+                binding.progressBar.visibility = View.VISIBLE
+                mainAdapter.submitList(result.results)
+                binding.progressBar.visibility = View.GONE
+//                binding.errorTextView.visibility = View.VISIBLE
             }
         }
 
