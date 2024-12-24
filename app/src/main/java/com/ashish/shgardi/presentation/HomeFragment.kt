@@ -2,9 +2,11 @@ package com.ashish.shgardi.presentation
 
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ashish.shgardi.R
@@ -38,10 +40,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun initViews() {
         viewModel.fetchPopularPeopleList()
+        setupSearchView()
     }
 
     private fun setupRecyclerView() {
-        mainAdapter = PopularPeopleAdapter()
+        mainAdapter = PopularPeopleAdapter(
+            onItemClick = {
+               viewModel.selectedPerson = it
+                findNavController().navigate(R.id.detailsFragment)
+            }
+        )
         binding.recyclerView.apply {
             adapter = mainAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -66,12 +74,34 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             viewModel.popularPeopleList.collect { result ->
 
                 binding.progressBar.visibility = View.VISIBLE
-                mainAdapter.submitList(result.results)
+                mainAdapter.submitList(result)
                 binding.progressBar.visibility = View.GONE
 //                binding.errorTextView.visibility = View.VISIBLE
             }
+
+        }
+        viewModel.filteredPeopleList.observe(viewLifecycleOwner) { result ->
+            mainAdapter.submitList(result)
         }
 
+    }
+
+    private fun setupSearchView() {
+        binding.etSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                println("newText: $newText")
+                if (newText != null && newText.length > 1) {
+                    viewModel.searchPeople(newText)
+                } else {
+                    mainAdapter.submitList(viewModel.popularPeopleList.value)
+                }
+                return true
+            }
+        })
     }
 
     override fun onDestroyView() {

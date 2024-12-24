@@ -9,7 +9,10 @@ import com.ashish.shgardi.data.model.People
 import com.ashish.shgardi.databinding.ItemPopularPersonBinding
 import com.bumptech.glide.Glide
 
-class PopularPeopleAdapter: ListAdapter<People, PopularPeopleAdapter.PopularPeopleViewHolder>(DiffCallback()) {
+class PopularPeopleAdapter(
+    private var onItemClick : (People) -> Unit
+): ListAdapter<People, PopularPeopleAdapter.PopularPeopleViewHolder>(DiffCallback()) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularPeopleViewHolder {
         val binding = ItemPopularPersonBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -17,17 +20,22 @@ class PopularPeopleAdapter: ListAdapter<People, PopularPeopleAdapter.PopularPeop
     }
 
     override fun onBindViewHolder(holder: PopularPeopleViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position),onItemClick)
     }
 
+
     class PopularPeopleViewHolder(private val binding: ItemPopularPersonBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(person: People) {
+        fun bind(person: People,onItemClick: (People) -> Unit) {
             println("Person: ${person.profilePath}")
             binding.person = person
             binding.executePendingBindings()
             Glide.with(binding.root)
                 .load(BASE_IMAGE_URL+person.profilePath)
                 .into(binding.imageViewProfile)
+
+            binding.root.setOnClickListener {
+                onItemClick.invoke(person)
+            }
         }
     }
 

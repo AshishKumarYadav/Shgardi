@@ -1,7 +1,10 @@
 package com.ashish.shgardi.presentation.viewModels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ashish.shgardi.data.model.People
 import com.ashish.shgardi.data.model.PeopleList
 import com.ashish.shgardi.domain.usecase.GetPopularPeopleListUseCase
 import com.ashish.shgardi.utils.Resources
@@ -25,23 +28,42 @@ class MainViewModel @Inject constructor(
     var isLastPage = false
     var isLoading = false
 
-    private val _popularPeopleList = MutableStateFlow<PeopleList>(PeopleList())
-    val popularPeopleList: StateFlow<PeopleList> = _popularPeopleList
+    private val _popularPeopleList = MutableStateFlow<List<People?>?>(emptyList())
+    val popularPeopleList: StateFlow<List<People?>?> = _popularPeopleList
 
+    private var masterList :MutableList<People?>? = mutableListOf()
+
+    var selectedPerson :People = People()
+
+    private val _filteredPeopleList = MutableLiveData<List<People>>()
+    val filteredPeopleList: LiveData<List<People>> get() = _filteredPeopleList
 
     fun fetchPopularPeopleList() {
         if (isLoading || isLastPage) return
         isLoading = true
         viewModelScope.launch(Dispatchers.IO) {
-            val result = getPopularPeopleListUseCase(currentPage)
-            println("result: $result")
-            _popularPeopleList.value = result
+            val data = getPopularPeopleListUseCase(currentPage)
+            println("result: ${data.results}")
+            println("Before size :"+masterList?.size)
+            val temp = data.results?.filterNotNull()?.toMutableList()
+            masterList?.addAll(temp!!)
+            println("After Size :"+masterList?.size)
+            _popularPeopleList.value = masterList
             currentPage++
             isLoading = false
-            if (result.page == result.totalPages) {
+            if (data.page == data.totalPages) {
                 isLastPage = true
             }
         }
+    }
+
+    fun searchPeople(query: String) {
+        println("Query: $query")
+        val filteredList = _popularPeopleList.value?.filter {
+            it?.name?.contains(query, ignoreCase = true) == true
+        }
+        filteredList?.filterNotNull()?.let { _filteredPeopleList.postValue(it) }
+
     }
 
     override fun onCleared() {

@@ -10,4 +10,10 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.ashish.shgardi.presentation.DetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_details" />
+
 </navigation>

@@ -12,14 +12,14 @@
         android:layout_marginTop="32dp"
         android:padding="16dp">
 
-        <EditText
+        <SearchView
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:hint="Search"
             android:hint="@string/search"
             android:maxLength="18"
-            android:background="@drawable/round_button"
+            android:imeActionLabel="@string/search"
             android:padding="12dp"
             android:layout_marginTop="8dp"
             android:inputType="text"
