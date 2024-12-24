@@ -25,7 +25,7 @@ class MainViewModel @Inject constructor(
     var isLastPage = false
     var isLoading = false
 
-    private val _popularPeopleList = MutableStateFlow<List<People?>?>(emptyList())
+    val _popularPeopleList = MutableStateFlow<List<People?>?>(emptyList())
     val popularPeopleList: StateFlow<List<People?>?> = _popularPeopleList
 
     //to store the selected person

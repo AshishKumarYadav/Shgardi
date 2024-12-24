@@ -51,9 +51,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.fragment.ktx)
 
     implementation(libs.hilt.android)
@@ -78,5 +75,19 @@ dependencies {
     kapt(libs.glideCompiler)
 
     androidTestImplementation(libs.androidx.espresso.core)
+
+    testImplementation(libs.jUnit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    // Unit test dependencies
+    testImplementation (libs.testCore)
+    testImplementation (libs.testExtJUnit)
+    testImplementation (libs.testRunner)
+    testImplementation (libs.testRules)
+    testImplementation (libs.coroutinesTest)
+    testImplementation (libs.mokito)
+    testImplementation (libs.mokitoInline)
+    testImplementation (libs.coreTesting)
+    testImplementation (libs.roboelectric)
+
 
 }
