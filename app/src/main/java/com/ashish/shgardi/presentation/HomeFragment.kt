@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +13,6 @@ import com.ashish.shgardi.R
 import com.ashish.shgardi.databinding.FragmentHomeBinding
 import com.ashish.shgardi.presentation.adapters.PopularPeopleAdapter
 import com.ashish.shgardi.presentation.viewModels.MainViewModel
-import com.ashish.shgardi.utils.Resources
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -46,7 +44,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupRecyclerView() {
         mainAdapter = PopularPeopleAdapter(
             onItemClick = {
-                println("Item Clicked: ${it.name}")
                viewModel.selectedPerson = it
                 findNavController().navigate(R.id.detailsFragment)
             }
@@ -74,10 +71,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         lifecycleScope.launch {
             viewModel.popularPeopleList.collect { result ->
 
-                binding.progressBar.visibility = View.VISIBLE
+                val showProgress = viewModel.isLoading && result.isNullOrEmpty()
+                binding.progressBar.visibility = if (showProgress) View.VISIBLE else View.GONE
                 mainAdapter.submitList(result)
-                binding.progressBar.visibility = View.GONE
-//                binding.errorTextView.visibility = View.VISIBLE
             }
 
         }

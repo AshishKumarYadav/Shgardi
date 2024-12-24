@@ -1,8 +1,8 @@
 package com.ashish.shgardi.di
 
 
-import com.ashish.shgardi.data.remote.Endpoints
 import com.ashish.shgardi.data.remote.ApiService
+import com.ashish.shgardi.data.remote.Endpoints
 import com.ashish.shgardi.utils.AuthInterceptor
 import com.ashish.shgardi.utils.Const
 import com.ashish.shgardi.utils.Const.NETWORK_CALL_TIMEOUT

@@ -1,18 +1,13 @@
 package com.ashish.shgardi.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ashish.shgardi.R
 import com.ashish.shgardi.databinding.FragmentDetailsBinding
-import com.ashish.shgardi.databinding.FragmentHomeBinding
 import com.ashish.shgardi.presentation.adapters.PersonDetailsAdapter
 import com.ashish.shgardi.presentation.adapters.PopularPeopleAdapter
 import com.ashish.shgardi.presentation.viewModels.MainViewModel
@@ -38,7 +33,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private fun initViews(){
 
-        println("Selected Person: ${viewModel.selectedPerson.name}")
         with(binding){
             personName.text = viewModel.selectedPerson.name
 
@@ -54,7 +48,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             adapter = personDetailsAdapter
         }
 
-        // Assuming you have a method to get the selected person and their knownFor list
+        // get the selected person and their knownFor list
         val selectedPerson = viewModel.selectedPerson
         selectedPerson.knownFor?.let { personDetailsAdapter.submitList(it) }
 

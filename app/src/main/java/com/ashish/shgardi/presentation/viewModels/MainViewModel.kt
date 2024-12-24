@@ -5,12 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ashish.shgardi.data.model.People
-import com.ashish.shgardi.data.model.PeopleList
 import com.ashish.shgardi.domain.usecase.GetPopularPeopleListUseCase
-import com.ashish.shgardi.utils.Resources
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -19,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getPopularPeopleListUseCase: GetPopularPeopleListUseCase,
-    ioDispatcher: CoroutineDispatcher,
+    private val ioDispatcher: CoroutineDispatcher,
 ): ViewModel() {
 
 
@@ -31,8 +28,7 @@ class MainViewModel @Inject constructor(
     private val _popularPeopleList = MutableStateFlow<List<People?>?>(emptyList())
     val popularPeopleList: StateFlow<List<People?>?> = _popularPeopleList
 
-    private var masterList :MutableList<People?>? = mutableListOf()
-
+    //to store the selected person
     var selectedPerson :People = People()
 
     private val _filteredPeopleList = MutableLiveData<List<People>>()
@@ -41,19 +37,16 @@ class MainViewModel @Inject constructor(
     fun fetchPopularPeopleList() {
         if (isLoading || isLastPage) return
         isLoading = true
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
+            // get the data from use case
             val data = getPopularPeopleListUseCase(currentPage)
-            println("result: ${data.results}")
-            println("Before size :"+masterList?.size)
-            val temp = data.results?.filterNotNull()?.toMutableList()
-            masterList?.addAll(temp!!)
-            println("After Size :"+masterList?.size)
-            _popularPeopleList.value = masterList
+            val temp = data.results?.filterNotNull().orEmpty()
+            _popularPeopleList.value = _popularPeopleList.value?.plus(temp)
+
+            // for pagination
             currentPage++
             isLoading = false
-            if (data.page == data.totalPages) {
-                isLastPage = true
-            }
+            isLastPage = data.page == data.totalPages
         }
     }
 

@@ -26,7 +26,6 @@ class PopularPeopleAdapter(
 
     class PopularPeopleViewHolder(private val binding: ItemPopularPersonBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(person: People, onItemClick: (People) -> Unit) {
-            println("Person: ${person.profilePath}")
             binding.person = person
             binding.executePendingBindings()
             Glide.with(binding.root)
