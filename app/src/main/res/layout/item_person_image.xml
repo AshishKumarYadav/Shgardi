@@ -3,95 +3,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+>
 
     <FrameLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintDimensionRatio="1">
 
-        <ImageView
-            android:id="@+id/knownForImage"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="#921F1B1B"
+            app:cardCornerRadius="10dp"
+            android:padding="5dp"
+            app:cardElevation="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|bottom"
-            android:orientation="vertical"
-            android:background="@android:color/darker_gray"
-            android:padding="4dp">
+            <ImageView
+                android:id="@+id/knownForImage"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:contentDescription="image_of_the_container"
+                android:scaleType="centerCrop"
+                tools:ignore="HardcodedText"
+                tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
-                android:id="@+id/knownForTitle"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:text="Title" />
+                android:layout_gravity="center_horizontal|bottom"
+                android:orientation="vertical"
+                android:background="#921F1B1B"
+                android:padding="4dp">
 
-            <TextView
-                android:id="@+id/overview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                tools:text="Overview" />
+                <TextView
+                    android:id="@+id/knownForTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="Title" />
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                tools:text="Name" />
+                <TextView
+                    android:id="@+id/overview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="Overview" />
 
-            <TextView
-                android:id="@+id/releaseDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                tools:text="Release Date" />
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="Name" />
 
-            <TextView
-                android:id="@+id/voteCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                tools:text="Vote Count" />
+                <TextView
+                    android:id="@+id/releaseDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="Release Date" />
 
-            <TextView
-                android:id="@+id/originalLanguage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                tools:text="Original Language" />
+                <TextView
+                    android:id="@+id/voteCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="Vote Count" />
 
-            <TextView
-                android:id="@+id/firstAirDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                tools:text="First Air Date" />
+                <TextView
+                    android:id="@+id/originalLanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="Original Language" />
 
-            <TextView
-                android:id="@+id/adult"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                tools:text="Adult" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/firstAirDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="First Air Date" />
+
+                <TextView
+                    android:id="@+id/adult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="Adult" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

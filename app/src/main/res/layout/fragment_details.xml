@@ -3,65 +3,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
     tools:context=".presentation.DetailsFragment">
 
-    <!-- Basic Personal Info -->
-    <TextView
-        android:id="@+id/personName"
+    <!-- Details Layout -->
+    <ImageButton
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/arrow_back"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        tools:text="Person Name" />
+        android:layout_marginTop="38dp" />
 
-    <TextView
-        android:id="@+id/personDepartment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/personName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        tools:text="Known For Department" />
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layout_constraintTop_toBottomOf="@id/backButton"
+       android:layout_marginBottom="16dp"
+       android:padding="12dp"
+       >
 
-    <TextView
-        android:id="@+id/personPopularity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/personDepartment"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        tools:text="Popularity" />
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
 
-    <!-- GridView for Images and Contributions -->
-    <!-- RecyclerView for Images and Contributions -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/personContributionsRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/personPopularity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        tools:listitem="@layout/item_person_image" />
+           >
+
+           <androidx.cardview.widget.CardView
+               android:id="@+id/card_view"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginTop="30dp"
+               android:clickable="true"
+               android:focusable="true"
+               app:cardCornerRadius="10dp"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:cardElevation="10dp">
+
+               <LinearLayout
+                   android:id="@+id/list_item_layout"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_gravity="center"
+                   android:gravity="center"
+                   android:orientation="vertical">
+
+                   <TextView
+                       android:id="@+id/personName"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textColor="@android:color/black"
+                       android:layout_gravity="center"
+                       android:gravity="center"
+                       android:textSize="24sp"
+                       android:textStyle="bold"
+                       android:layout_margin="5dp"
+                       tools:text="Person Name" />
+                   <ImageView
+                       android:id="@+id/imageView"
+                       android:layout_width="match_parent"
+                       android:layout_height="350dp"
+                       android:contentDescription="image_of_the_container"
+                       android:scaleType="centerCrop"
+                       tools:ignore="HardcodedText"
+                       tools:srcCompat="@tools:sample/avatars" />
+
+               </LinearLayout>
+           </androidx.cardview.widget.CardView>
+
+           <TextView
+               android:id="@+id/contributionsTitle"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:textColor="@android:color/background_dark"
+               android:textSize="18sp"
+               android:textStyle="bold"
+               android:text="Contributions"
+               app:layout_constraintTop_toBottomOf="@id/card_view"
+               app:layout_constraintStart_toStartOf="parent"
+               />
+           <!-- RecyclerView for Images and Contributions -->
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/personContributionsRecyclerView"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:layout_constraintTop_toBottomOf="@id/contributionsTitle"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+               android:orientation="horizontal"
+               tools:listitem="@layout/item_person_image" />
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+   </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

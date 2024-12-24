@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -23,7 +24,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by activityViewModels()
 
     private lateinit var mainAdapter: PopularPeopleAdapter
 
@@ -39,13 +40,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun initViews() {
-        viewModel.fetchPopularPeopleList()
         setupSearchView()
     }
 
     private fun setupRecyclerView() {
         mainAdapter = PopularPeopleAdapter(
             onItemClick = {
+                println("Item Clicked: ${it.name}")
                viewModel.selectedPerson = it
                 findNavController().navigate(R.id.detailsFragment)
             }
