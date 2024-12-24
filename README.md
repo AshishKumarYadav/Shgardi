@@ -8,7 +8,7 @@ Displaying a list of popular people (actors, directors ..etc) with infinite scro
 ScreenShots:
 
 
-![shgardi 2](https://github.com/user-attachments/assets/91a61606-5741-4015-9a93-81997824adb0)  ![shgardi 1](https://github.com/user-attachments/assets/ca99cb35-3e59-41ab-803e-7fe76a909b72)
+![shgardi 1](https://github.com/user-attachments/assets/ca99cb35-3e59-41ab-803e-7fe76a909b72)  ![shgardi 2](https://github.com/user-attachments/assets/91a61606-5741-4015-9a93-81997824adb0) 
 
 
 This application is created mainly by keeping Clean Code MVVM Architecture in mind.
