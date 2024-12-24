@@ -6,6 +6,8 @@ Displaying a list of popular people (actors, directors ..etc) with infinite scro
 * When a person entry is selected, a details view is opened with the basic personal info and grid view of his/her images.
 
 ScreenShots:
+![shgardi 2](https://github.com/user-attachments/assets/91a61606-5741-4015-9a93-81997824adb0)
+![shgardi 1](https://github.com/user-attachments/assets/ca99cb35-3e59-41ab-803e-7fe76a909b72)
 
 
 This application is created mainly by keeping Clean Code MVVM Architecture in mind.
