@@ -5,8 +5,7 @@ Displaying a list of popular people (actors, directors ..etc) with infinite scro
 * The ability to search for people with infinite scrolling.
 * When a person entry is selected, a details view is opened with the basic personal info and grid view of his/her images.
 
-
-Application Screenshots
+ScreenShots:
 
 
 This application is created mainly by keeping Clean Code MVVM Architecture in mind.
@@ -33,6 +32,7 @@ Presentation layer: The presentation layer provides the UI implementation of the
 Why MVVM Architecture over other patterns: MVVM architecture is a Model-View-ViewModel architecture that removes the tight coupling between each component. Most importantly, in this architecture, the children don't have the direct reference to the parent, they only have the reference by observables. Also View Model store and manage UI-related data in a lifecycle conscious way. It allows data to survive configuration changes such as screen rotations.
 
 Technologies
+
 Kotlin - Official programming language for Android development.
 Coroutines - For working with asynchronous threading related task.
 Flow - A cold asynchronous data stream that sequentially emits values and completes normally or with an exception.
@@ -46,9 +46,11 @@ Retrofit - A type-safe HTTP client for Android and Java.
 Glide - Glide is a fast and efficient open source media management and image loading framework for Android.
 
 Tools
+
 Android Studio
 TMDB API
 
 
 Author
+
 Ashish Kumar Yadav
